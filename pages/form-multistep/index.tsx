@@ -2,6 +2,7 @@ import React from "react";
 
 const index = () => {
   const [screen, setScreen] = React.useState<number>(0);
+
   const [data, setData] = React.useState({
     firstName: "",
     lastName: "",
