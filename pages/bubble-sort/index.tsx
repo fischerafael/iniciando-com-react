@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react";
 
 const index = () => {
-  const [numbers, setNumbers] = useState([8, 5, 2, 0, 3, 1]);
+  const [numbers, setNumbers] = useState([
+    8, 5, 2, 0, 3, 1, 12, 11, 52, 33, 123123, 23,
+  ]);
 
   const orderedNumbers = bubbleSort(numbers);
 
@@ -23,14 +25,24 @@ const index = () => {
 export default index;
 
 const bubbleSort = (numbers: number[]): number[] => {
-  for (let i = 0; i < numbers.length; i++) {
-    const current = numbers[i];
-    const next = numbers[i + 1];
-    if (current > next) {
-      numbers[i] = next;
-      numbers[i + 1] = current;
+  let lastItemsAlreadyOrdered = 0;
+
+  const orderedNumbers = [...numbers];
+  for (
+    let j = 0;
+    j < orderedNumbers.length - 1 - lastItemsAlreadyOrdered;
+    j++
+  ) {
+    for (let i = 0; i < orderedNumbers.length - 1; i++) {
+      const current = orderedNumbers[i];
+      const next = orderedNumbers[i + 1];
+      if (current > next) {
+        orderedNumbers[i] = next;
+        orderedNumbers[i + 1] = current;
+        lastItemsAlreadyOrdered++;
+      }
     }
   }
 
-  return numbers;
+  return orderedNumbers;
 };
