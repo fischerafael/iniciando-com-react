@@ -52,3 +52,7 @@ const bubbleSort = (numbers: number[]): number[] => {
 
   return orderedNumbers;
 };
+
+const selectionSort = (numbers: number[]): number[] => {
+  return numbers;
+};
