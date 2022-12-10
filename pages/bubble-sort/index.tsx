@@ -1,37 +1,12 @@
 import React, { useEffect, useState } from "react";
 
-const selectionSort = (numbers: number[]): number[] => {
-  for (let currentIndex = 0; currentIndex < numbers.length; currentIndex++) {
-    let min = currentIndex;
-    // const { smallest } = findSmallestNumber(numbers);
-    // const indexOfSmallest = numbers.findIndex((num) => num === smallest);
-    // min = indexOfSmallest;
-
-    for (let j = currentIndex + 1; j < numbers.length; currentIndex++) {
-      if (numbers[j] < numbers[min]) {
-        min = j;
-      }
-    }
-
-    if (min !== currentIndex) {
-      let temp = numbers[currentIndex];
-      numbers[currentIndex] = numbers[min];
-      numbers[min] = temp;
-    }
-  }
-  return numbers;
-};
-
 const index = () => {
   const [numbers, setNumbers] = useState([33, 123123, 5, 23, 1]);
 
   const [value, setValue] = useState(0);
 
   const orderedNumbers = bubbleSort(numbers);
-  const sortedSelection = selectionSort(numbers);
   const { smallest, biggest } = findSmallestNumber(numbers);
-
-  console.log(sortedSelection);
 
   const handleAdd = () => {
     if (value === 0) return;
