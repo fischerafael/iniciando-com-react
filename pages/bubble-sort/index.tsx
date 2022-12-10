@@ -2,12 +2,13 @@ import React, { useEffect, useState } from "react";
 
 const index = () => {
   const [numbers, setNumbers] = useState([
-    8, 5, 2, 0, 3, 1, 12, 11, 52, 33, 123123, 23,
+    8, 5, 2, 3, 1, 12, 11, 52, 33, 123123, 23,
   ]);
 
   const [value, setValue] = useState(0);
 
   const orderedNumbers = bubbleSort(numbers);
+  const { smallest, biggest } = findSmallestNumber(numbers);
 
   const handleAdd = () => {
     if (value === 0) return;
@@ -27,9 +28,14 @@ const index = () => {
         <button onClick={handleAdd}>Add</button>
       </div>
       <div>
+        <p>Ordered Numbers</p>
         {orderedNumbers.map((num, index) => (
           <li key={index}>{num}</li>
         ))}
+        <p>Smalles Number</p>
+        {smallest}
+        <p>Biggest Number</p>
+        {biggest}
       </div>
     </div>
   );
@@ -55,4 +61,22 @@ const bubbleSort = (numbers: number[]): number[] => {
 
 const selectionSort = (numbers: number[]): number[] => {
   return numbers;
+};
+
+const findSmallestNumber = (
+  numbers: number[]
+): { smallest: number; biggest: number } => {
+  let smallest = numbers[0];
+  let biggest = numbers[0];
+
+  for (let i = 0; i < numbers.length; i++) {
+    if (numbers[i] < smallest) {
+      smallest = numbers[i];
+    }
+    if (numbers[i] > biggest) {
+      biggest = numbers[i];
+    }
+  }
+
+  return { smallest, biggest };
 };
